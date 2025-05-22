@@ -1,0 +1,18 @@
+"0","aspirin <- getDrugIngredientCodes(cdm = cdm, name  = ""aspirin"", nameStyle = ""{concept_name}"")"
+"0","cdm$aspirin <- conceptCohort(cdm = cdm, conceptSet = aspirin, name = ""aspirin"")"
+"2","[38;5;255m[36mℹ[38;5;255m Subsetting table [1mdrug_exposure[22m using 2 concepts with domain: [1mdrug[22m.[39m"
+"2","[38;5;255m[36mℹ[38;5;255m Combining tables.[39m"
+"2","[38;5;255m[36mℹ[38;5;255m Creating cohort attributes.[39m"
+"2","[38;5;255m[36mℹ[38;5;255m Applying cohort requirements.[39m"
+"2","[38;5;255m[36mℹ[38;5;255m Merging overlapping records.[39m"
+"2","[38;5;255m[32m✔[38;5;255m Cohort [1maspirin[22m created.[39m"
+"0","summariseCohortCount(cdm$aspirin) |> tableCohortCount()"
+"2","[36mℹ[39m summarising data
+"
+"2","[36mℹ[39m summarising cohort [34m[34maspirin[34m[39m
+"
+"2","[32m✔[39m summariseCharacteristics finished!
+"
+"2","[38;5;255m`result_id` is not present in [34mresult[38;5;255m.[39m"
+"2","[38;5;255m`result_id` is not present in [34mresult[38;5;255m.[39m"
+"2","[38;5;255m`result_id` is not present in [34mresult[38;5;255m.[39m"

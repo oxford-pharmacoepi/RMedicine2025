@@ -1,0 +1,6 @@
+"0","# Load relevant packages"
+"0","library(CDMConnector)"
+"0","library(CodelistGenerator)"
+"0","library(CohortConstructor)"
+"0","library(CohortCharacteristics)"
+"0","library(dplyr)"

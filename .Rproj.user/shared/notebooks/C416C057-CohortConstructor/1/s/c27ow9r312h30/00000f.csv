@@ -1,0 +1,8 @@
+"0","cdm$intersection <- cdm$medications |>"
+"0","  collapseCohorts(gap = 7) |>"
+"0","  CohortConstructor::intersectCohorts("
+"0","    gap = 7,"
+"0","    name = ""intersection"""
+"0","  )"
+"2","Warning: [38;5;255m[33m![38;5;255m There already exist a table named `tmp_006_og_016_1747937441`. It will be overwritten.[39m"
+"0","settings(cdm$intersection)"
