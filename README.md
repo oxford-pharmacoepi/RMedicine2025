@@ -1,6 +1,6 @@
 ## A framework for cohort building in R: the CohortConstructor package for data mapped to the OMOP Common Data Model
 ### R/Medicine 2025
-### Edward Burn & Núria Mercadé-Besora, University of Oxofrd
+#### Edward Burn & Núria Mercadé-Besora, University of Oxofrd
 ##
 
 This repository contains the contents for the Demo of the CohortConstructor R package at the [R/Medicine 2025](https://rconsortium.github.io/RMedicine_website/) online conference.
