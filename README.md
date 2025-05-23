@@ -1,8 +1,10 @@
-# Software Demo: A framework for cohort building in R: the CohortConstructor package for data mapped to the OMOP Common Data Model
-## R/Medicine 2025
+## A framework for cohort building in R: the CohortConstructor package for data mapped to the OMOP Common Data Model
+### R/Medicine 2025
 ### Edward Burn & Núria Mercadé-Besora, University of Oxofrd
+##
 
 This repository contains the contents for the Demo of the CohortConstructor R package at the [R/Medicine 2025](https://rconsortium.github.io/RMedicine_website/) online conference.
+
 The Demo takes place the 9th of June at 10.00h (EDT) / 16.00h (CET).
 
 If you are planning on attending the Demo and want to follow the examples along, please have the follwing packages and mock data download in your RStudio session. 
