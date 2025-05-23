@@ -61,7 +61,7 @@ Additionally, cohort objects have four key attributes: 1) Settings - links the c
 To streamline cohort building in R using OMOP data, we developed the R package CohortConstructor. It provides tools for cohort manipulation, including filtering by demographics, calendar time, or presence/absence in other cohorts. Additionally, the package tracks clinical codes used and population attrition for each operation. 
 
 
-CohortConstructor version 0.3.5 is available in CRAN at the time of abstract submission. The development version is publicly available in GitHub: https://github.com/OHDSI/CohortConstructor/. 
+CohortConstructor version 0.4.0 is available in CRAN at the time of abstract submission. The development version is publicly available in GitHub: https://github.com/OHDSI/CohortConstructor/. 
 The pipeline to build cohorts begins by creating base cohorts. These can be defined using clinical concepts (e.g., asthma diagnoses) or demographics (e.g., females aged >18). Once base cohorts are established, curation steps are applied to meet study-specific inclusion criteria. 
 
 
