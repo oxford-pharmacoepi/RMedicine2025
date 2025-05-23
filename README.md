@@ -1,6 +1,6 @@
-# A framework for cohort building in R: the CohortConstructor package for data mapped to the OMOP Common Data Model
 ### R/Medicine 2025
 
+# A framework for cohort building in R: the CohortConstructor package for data mapped to the OMOP Common Data Model
 
 ## Pre-Demo Set-Up
 
