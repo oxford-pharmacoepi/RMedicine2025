@@ -575,12 +575,11 @@ attr(cdm$medications, "cohort_codelist")
 
 ```{r}
 cdm$medications_requirement <- cdm$medications %>% 
-  requireIsFirstEntry() %>% 
+  requireIsFirstEntry(name = "medications_requirement") %>% 
   requireDemographics(
-    ageRange = list(c(18, 85)),
+    ageRange = list(c(18, 150)),
     sex = "Female", 
-    minPriorObservation = 30,
-    name = "medications_requirement"
+    minPriorObservation = 30
   )
 ```
 
@@ -591,8 +590,9 @@ cdm$medications_requirement <- cdm$medications %>%
 ::: {style="margin-bottom: 10px;"}
 :::
 
+**Attrition**
 
-```{r}
+```{r, echo=FALSE}
 result <- cdm$medications_requirement |> 
   summariseCohortAttrition(cohortId = 1) 
 result |> 
@@ -761,12 +761,33 @@ result |>
 ::: {style="margin-bottom: 10px;"}
 :::
 
-1) Collapse entries of acetaminophen and diclofenac, so if the gap is 7 days or less, entries are merged.
-
-
-2) Create a new cohort that contains people who had an exposure to both diclofenac and acetaminophen at the same time using.
+**1) Collapse** entries of acetaminophen and diclofenac, so if the gap is 7 days or less, entries are merged.
 
 . . .
+
+![](collapse.png)
+
+
+## Cohort combinations - Example
+
+![](logoCC.png){.absolute right="70px" top="0px" width="65" height="70"} ![](logoOHDSI.png){.absolute right="0px" top="0px" width="65" height="70"}
+
+::: {style="margin-bottom: 10px;"}
+:::
+
+**2)** Create a new cohort that contains people who had an exposure to both **diclofenac and acetaminophen** at the same time using.
+
+. . .
+
+![](intersect.png)
+
+
+## Cohort combinations - Example
+
+![](logoCC.png){.absolute right="70px" top="0px" width="65" height="70"} ![](logoOHDSI.png){.absolute right="0px" top="0px" width="65" height="70"}
+
+::: {style="margin-bottom: 10px;"}
+:::
 
 ```{r}
 cdm$intersection <- cdm$medications |>
@@ -792,67 +813,6 @@ attr(cdm$intersection, "cohort_codelist")
 
 
 
-# PhenotypeR
-An R package to assess the research-readiness of a set of cohorts in the OMOP Common Data Model
-
-## Diagnostics
-
-1) **Database diagnostics:** Information to understand the database where the cohorts have been created.
-
-
-2) **Codelists diagnostics:** Which of the concepts are used in the database, and in the cohorts? In which frequency? Are we missing any codes?
-
-
-3) **Cohort diagnostics:** How many people are in the cohorts? Which was the impact of the inclusion criteria? Which are the characteristics of the patients in the cohorts?
-
-
-4) **Matched  diagnostics:** Compare characteristics of the people in the cohorts to matched pairs (sex and age) in the general database population.
-
-
-5) **Population  diagnostics:** Incidence and Prevalence of the cohorts in the database.
-
-## Functions
-
-- Run all diagnostics
-
-    - `phenotypeDiagnostics()`
-
-- Run individual diagnostics
-
-    - `codelistDiagnostics()`
-    
-    - `cohortDiagnostics()`
-    
-    - `databaseDiagnostics()`
-    
-    - `matchedDiagnostics()`
-    
-    - `populationDiagnostics()`
-
-
-- Visualise results
-
-    - `shinyDiagnostics()`
-
-
-## Example
-
-We can easily run all the diagnostics explain as follows:
-
-```{r, eval=FALSE}
-result <- phenotypeDiagnostics(cdm$medications)
-```
-
-Once we have results, we can creat interactive application to revise results.
-
-```{r, eval=FALSE}
-shinyDiagnostics(result = result, directory = tempdir())
-```
-
-
-See an example shiny app [here](https://dpa-pde-oxford.shinyapps.io/Readme_PhenotypeR/).
-
-
 # ED PART 2
 
 
@@ -869,7 +829,7 @@ See an example shiny app [here](https://dpa-pde-oxford.shinyapps.io/Readme_Pheno
 
 ## Exercise 1 - Base Cohorts
 
-**Create a cohort of aspirin use. Consider that two records separated by less than 1 week, can be considered as a continuous exposure.** 
+**Create a cohort of aspirin use.** 
 
 - *How many records does it have? And how many subjects?*
 
