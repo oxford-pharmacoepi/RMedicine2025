@@ -38,13 +38,19 @@ A framework for cohort building in R: the CohortConstructor package for data map
 
 ## Standardising health care data
 
+![](logoCC.png){.absolute right="70px" top="0px" width="65" height="70"} ![](logoOHDSI.png){.absolute right="0px" top="0px" width="65" height="70"}
+
 ![](images/omop1-01.png)
 
 ## Standardising health care data
 
+![](logoCC.png){.absolute right="70px" top="0px" width="65" height="70"} ![](logoOHDSI.png){.absolute right="0px" top="0px" width="65" height="70"}
+
 ![](images/omop1.png)
 
 ## The OMOP CDM tables
+
+![](logoCC.png){.absolute right="70px" top="0px" width="65" height="70"} ![](logoOHDSI.png){.absolute right="0px" top="0px" width="65" height="70"}
 
 ![Tables and relation in the OMOP Common Data Model](https://ohdsi.github.io/TheBookOfOhdsi/images/CommonDataModel/cdmDiagram.png)
 
@@ -55,6 +61,8 @@ A framework for cohort building in R: the CohortConstructor package for data map
 # Tidy R programming with databases
 
 ## Creating a data model in R
+
+![](logoCC.png){.absolute right="70px" top="0px" width="65" height="70"} ![](logoOHDSI.png){.absolute right="0px" top="0px" width="65" height="70"}
 
 ```{r, echo=TRUE}
 library(dplyr)
@@ -70,15 +78,24 @@ flightsRef <- c("planes", "flights") |>
     map(\(x) tbl(db, x))
 ```
 
+
 ```{r, echo=TRUE}
 flightsRef$planes |> glimpse()
 ```
+
+
+## Creating a data model in R
+
+![](logoCC.png){.absolute right="70px" top="0px" width="65" height="70"} ![](logoOHDSI.png){.absolute right="0px" top="0px" width="65" height="70"}
+
 
 ```{r, echo=TRUE}
 flightsRef$flights |> glimpse()
 ```
 
 ## Tidy queries
+
+![](logoCC.png){.absolute right="70px" top="0px" width="65" height="70"} ![](logoOHDSI.png){.absolute right="0px" top="0px" width="65" height="70"}
 
 ```{r, echo=TRUE}
 flightsRef$flights |> 
@@ -96,6 +113,9 @@ flightsRef$flights |>
 ```
 
 ## Behind the scenes
+
+![](logoCC.png){.absolute right="70px" top="0px" width="65" height="70"} ![](logoOHDSI.png){.absolute right="0px" top="0px" width="65" height="70"}
+
 ```{r, echo=TRUE}
 flightsRef$flights |> 
   filter(!is.na(arr_delay)) |> 
@@ -114,6 +134,8 @@ flightsRef$flights |>
 # Creating a reference to the OMOP CDM from R
 
 ## Creating a reference to the OMOP CDM from R
+
+![](logoCC.png){.absolute right="70px" top="0px" width="65" height="70"} ![](logoOHDSI.png){.absolute right="0px" top="0px" width="65" height="70"}
 
 ```{r, echo=TRUE}
 library(CDMConnector)
@@ -135,11 +157,14 @@ We're going to use this example dataset throughout!
 
 ## Creating a reference to the OMOP CDM from R
 
+![](logoCC.png){.absolute right="70px" top="0px" width="65" height="70"} ![](logoOHDSI.png){.absolute right="0px" top="0px" width="65" height="70"}
+
 ```{r, echo=TRUE}
 library(dplyr)
 cdm$person |> 
   glimpse()
 ```
+
 
 ```{r, echo=TRUE}
 cdm$person |> 
@@ -148,12 +173,16 @@ cdm$person |>
 
 ## Creating a reference to the OMOP CDM from R
 
+![](logoCC.png){.absolute right="70px" top="0px" width="65" height="70"} ![](logoOHDSI.png){.absolute right="0px" top="0px" width="65" height="70"}
+
 ```{r, echo=TRUE}
 cdm$concept |> 
   glimpse()
 ```
 
 ## Identifying relevant codes
+
+![](logoCC.png){.absolute right="70px" top="0px" width="65" height="70"} ![](logoOHDSI.png){.absolute right="0px" top="0px" width="65" height="70"}
 
 ```{r, echo=TRUE}
 library(CodelistGenerator)
@@ -665,7 +694,7 @@ attr(cdm$medications, "cohort_codelist")
 ::: {style="margin-bottom: 10px;"}
 :::
 
--   We can apply different inclusion and exclusion criteria using CohortConstructor's functions in a pipe-line fashion. For instance, in what follows we require
+-   We can apply different inclusion criteria using CohortConstructor's functions in a pipe-line fashion. For instance, in what follows we require
 
     -   only first record per person
 
@@ -790,7 +819,7 @@ cdm$medications_trimmed <- cdm$medications %>%
 ::: {style="margin-bottom: 10px;"}
 :::
 
-```{r}
+```{r, echo=FALSE}
 result <- cdm$medications_trimmed |> 
   summariseCohortAttrition(cohortId = 1) 
 result |> 
@@ -856,18 +885,6 @@ result |>
 :::
 :::
 
-## Cohort combinations - Example
-
-![](logoCC.png){.absolute right="70px" top="0px" width="65" height="70"} ![](logoOHDSI.png){.absolute right="0px" top="0px" width="65" height="70"}
-
-::: {style="margin-bottom: 10px;"}
-:::
-
-**1) Collapse** entries of acetaminophen and diclofenac, so if the gap is 7 days or less, entries are merged.
-
-. . .
-
-![](collapse.png)
 
 ## Cohort combinations - Example
 
@@ -876,7 +893,7 @@ result |>
 ::: {style="margin-bottom: 10px;"}
 :::
 
-**2)** Create a new cohort that contains people who had an exposure to both **diclofenac and acetaminophen** at the same time using.
+Create a new cohort that contains people who had an exposure to both **diclofenac and acetaminophen** at the same time using.
 
 . . .
 
@@ -889,13 +906,10 @@ result |>
 ::: {style="margin-bottom: 10px;"}
 :::
 
+
 ```{r}
 cdm$intersection <- cdm$medications |>
-  collapseCohorts(gap = 7) |>
-  CohortConstructor::intersectCohorts(
-    gap = 7,
-    name = "intersection"
-  )
+  CohortConstructor::intersectCohorts(name = "intersection")
 
 settings(cdm$intersection)
 ```

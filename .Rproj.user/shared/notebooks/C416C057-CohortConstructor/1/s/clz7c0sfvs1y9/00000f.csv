@@ -1,8 +1,0 @@
-"0","cdm$medications_requirement <- cdm$medications %>% "
-"0","  requireIsFirstEntry() %>% "
-"0","  requireDemographics("
-"0","    ageRange = list(c(18, 85)),"
-"0","    sex = ""Female"", "
-"0","    minPriorObservation = 30,"
-"0","    name = ""medications_requirement"""
-"0","  )"
