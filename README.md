@@ -2,6 +2,8 @@
 
 # A framework for cohort building in R: the CohortConstructor package for data mapped to the OMOP Common Data Model
 
+https://dpa-pde-oxford.quarto.pub/rmedicinecohortconstructor/
+
 ## Pre-Demo Set-Up
 
 This repository contains the contents for the Demo of the CohortConstructor R package at the [R/Medicine 2025](https://rconsortium.github.io/RMedicine_website/) online conference.
