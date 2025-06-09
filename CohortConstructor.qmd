@@ -50,9 +50,9 @@ A framework for cohort building in R: the CohortConstructor package for data map
 
 ## Network studies using the OMOP CDM
 
-![](images/omop_study_flow.png)
+![](images/heron uk flow.png)
 
-# The OMOP Common Data Model
+# Creating a reference to the OMOP CDM from R
 
 ## Creating a reference to the OMOP CDM from R
 
