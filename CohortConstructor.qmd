@@ -52,6 +52,65 @@ A framework for cohort building in R: the CohortConstructor package for data map
 
 ![](images/heron uk flow.png)
 
+# Tidy R programming with databases
+
+## Creating a data model in R
+
+```{r, echo=TRUE}
+library(dplyr)
+library(dbplyr)
+library(duckdb)
+library(purrr)
+
+db <- DBI::dbConnect(duckdb(), dbdir = ":memory:")
+copy_nycflights13(db)
+
+flightsRef <- c("planes", "flights") |>
+    set_names() |> 
+    map(\(x) tbl(db, x))
+```
+
+```{r, echo=TRUE}
+flightsRef$planes |> glimpse()
+```
+
+```{r, echo=TRUE}
+flightsRef$flights |> glimpse()
+```
+
+## Tidy queries
+
+```{r, echo=TRUE}
+flightsRef$flights |> 
+  filter(!is.na(arr_delay)) |> 
+  select("dest", 
+         "distance", 
+         "carrier", 
+         "tailnum", 
+         "delay" = "arr_delay") |> 
+  inner_join(flightsRef$planes |> 
+              select("tailnum", 
+                     "seats"),
+            by = join_by(tailnum)) |> 
+  glimpse()
+```
+
+## Behind the scenes
+```{r, echo=TRUE}
+flightsRef$flights |> 
+  filter(!is.na(arr_delay)) |> 
+  select("dest", 
+         "distance", 
+         "carrier", 
+         "tailnum", 
+         "delay" = "arr_delay") |> 
+  inner_join(flightsRef$planes |> 
+              select("tailnum", 
+                     "seats"),
+            by = join_by(tailnum)) |> 
+  show_query()
+```
+
 # Creating a reference to the OMOP CDM from R
 
 ## Creating a reference to the OMOP CDM from R
@@ -851,8 +910,6 @@ settings(cdm$intersection)
 ```{r}
 attr(cdm$intersection, "cohort_codelist")
 ```
-
-# ED PART 2
 
 # Thank you! {.title-slide}
 
